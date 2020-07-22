@@ -1,3 +1,4 @@
+package com.musanchui.contact;
 class Account{
 	public static void main(String [] args){
 		boolean conti = true;
@@ -5,6 +6,7 @@ class Account{
 		Utility utility = new Utility();
 		int in=0;
 		int out=0;
+		String ae = "";
 		String inExplain = "";
 		String outExplain ="";
 		while(conti){
@@ -18,8 +20,40 @@ class Account{
 			System.out.print("select in 1-4:");
 			
 			char userInput = utility.readMenuSelection();
-			String users = String.valueOf(userInput);
-			if(users.equals("1")){
+			//String users = String.valueOf(userInput);
+			switch (userInput) {
+			case '1':
+				System.out.println("\tbalance\tturnover\texplain");
+				System.out.println(ae);
+				//System.out.println("income\t"+balance+"\t"+in+"\t"+inExplain);
+				//System.out.println("output\t"+balance+"\t"+out+"\t"+outExplain);
+				break;
+			case '2':
+				System.out.println("income number:");
+				int inNum = utility.readNumber();
+				in = in+inNum;
+				balance = balance+in;
+				System.out.println("income explaination:");
+				inExplain=utility.readString();
+				ae += "income\t"+balance+"\t"+inNum+"\t"+inExplain+"\n";
+				break;
+			case '3':
+				System.out.println("output number:");
+				int outNum = utility.readNumber();
+				out = out+outNum;
+				balance = balance-out;
+				System.out.println("outcome explaination:");
+				outExplain=utility.readString();
+				ae += "output\t"+balance+"\t"+outNum+"\t"+outExplain+"\n";
+				break;
+			case'4':
+				System.out.println("Are you sure to quit? Y/N");
+				char anwser = utility.readConfirmSelection();
+				String a = String.valueOf(anwser);
+				if(a.equals("Y"))conti = false;
+				break;
+			}
+			/*if(users.equals("1")){
 				System.out.println("\tbalance\tturnover\texplain");
 				System.out.println("income\t"+balance+"\t"+in+"\t"+inExplain);
 				System.out.println("output\t"+balance+"\t"+out+"\t"+outExplain);
@@ -47,8 +81,7 @@ class Account{
 				System.out.println("Are you sure to quit? Y/N");
 				char anwser = utility.readConfirmSelection();
 				String a = String.valueOf(anwser);
-				if(a.equals("Y"))conti = false;
+				if(a.equals("Y"))conti = false;*/
 			}
 		}		
 	}
-}
